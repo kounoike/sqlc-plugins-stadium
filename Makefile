@@ -1,14 +1,17 @@
 all: sqlc-crud sqlc-fix-schema
 
 sqlc-crud:
-	cd plugin/crud && go build -o $(GOPATH)/bin/sqlc-crud ./main.go
+	cd plugin/sqlc-crud && go build .
 
 # sqlc-crud.wasm:
 # 	cd plugin/crud && tinygo build -o sqlc-crud.wasm -target=wasi main.go
 # 	openssl sha256 plugin/sqlc-crud.wasm
 
 sqlc-fix-schema:
-	cd plugin/fix-schema && go build -o $(GOPATH)/bin/sqlc-fix-schema ./main.go
+	cd plugin/sqlc-fix-schema && go build .
+
+install:
+	cp plugin/sqlc-crud/sqlc-crud plugin/sqlc-fix-schema/sqlc-fix-schema $(GOPATH)/bin/
 
 run:
 	rm sample/database/schema_fix/* sample/database/queries_crud/*
