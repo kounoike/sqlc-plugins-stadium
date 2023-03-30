@@ -1,0 +1,14 @@
+version: "2"
+sql:
+  - schema:
+      - "./database/schema"
+      - "./database/schema_fix"
+    queries:
+      - "./database/queries/"
+      - "./database/queries_crud/"
+    engine: "mysql"
+    gen:
+      go:
+        package: "table"
+        out: "./database/table/"
+        emit_db_tags: true

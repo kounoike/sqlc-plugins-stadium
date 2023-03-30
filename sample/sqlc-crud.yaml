@@ -1,0 +1,15 @@
+version: "2"
+plugins:
+  - name: crud
+    process:
+      cmd: sqlc-crud
+sql:
+  - schema:
+      - "./database/schema"
+      - "./database/schema_fix"
+    queries:
+      - "./database/queries/"
+    engine: "mysql"
+    codegen:
+      - plugin: crud
+        out: "./database/queries_crud/"

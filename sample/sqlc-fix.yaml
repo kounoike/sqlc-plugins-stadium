@@ -1,0 +1,14 @@
+version: "2"
+plugins:
+  - name: fix
+    process:
+      cmd: sqlc-fix-schema
+sql:
+  - schema:
+      - "./database/schema"
+    queries:
+      - "./database/queries/"
+    engine: "mysql"
+    codegen:
+      - plugin: fix
+        out: "./database/schema_fix/"
