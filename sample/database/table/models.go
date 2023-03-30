@@ -7,20 +7,20 @@ package table
 import ()
 
 type Blog struct {
-	ID       int32  `db:"id"`
+	ID       uint32 `db:"id"`
 	Url      string `db:"url"`
 	Contents string `db:"contents"`
 }
 
 type BlogComment struct {
-	ID       int32  `db:"id"`
+	ID       uint32 `db:"id"`
 	Guid     string `db:"guid"`
 	Url      string `db:"url"`
 	Contents string `db:"contents"`
 }
 
 type User struct {
-	ID   int32  `db:"id"`
+	ID   uint32 `db:"id"`
 	Guid string `db:"guid"`
 	Name string `db:"name"`
 }

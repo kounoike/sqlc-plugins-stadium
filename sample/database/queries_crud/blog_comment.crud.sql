@@ -6,13 +6,17 @@ INSERT INTO blog_comment (
 ) VALUES (
 	 ?, ?, ?
 );
+
+-- name: UpdateBlogComment :exec
+UPDATE blog_comment SET
+	 guid = ?, url = ?, contents = ?
+WHERE id = ?;
+
 -- name: GetBlogComment :one
 SELECT * FROM blog_comment WHERE id = ?;
 
-
 -- name: GetBlogCommentByGUID :one
 SELECT * FROM blog_comment WHERE guid = ?;
-
 
 -- name: DeleteBlogComment :exec
 DELETE FROM blog_comment WHERE id = ?;

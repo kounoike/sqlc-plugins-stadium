@@ -6,10 +6,13 @@ INSERT INTO blog (
 ) VALUES (
 	 ?, ?
 );
+
+-- name: UpdateBlog :exec
+UPDATE blog SET
+	 url = ?, contents = ?
+WHERE id = ?;
+
 -- name: GetBlog :one
 SELECT * FROM blog WHERE id = ?;
-
-
-
 -- name: DeleteBlog :exec
 DELETE FROM blog WHERE id = ?;

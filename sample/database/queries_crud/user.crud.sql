@@ -6,13 +6,17 @@ INSERT INTO user (
 ) VALUES (
 	 ?, ?
 );
+
+-- name: UpdateUser :exec
+UPDATE user SET
+	 guid = ?, name = ?
+WHERE id = ?;
+
 -- name: GetUser :one
 SELECT * FROM user WHERE id = ?;
 
-
 -- name: GetUserByGUID :one
 SELECT * FROM user WHERE guid = ?;
-
 
 -- name: DeleteUser :exec
 DELETE FROM user WHERE id = ?;

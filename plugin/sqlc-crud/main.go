@@ -24,16 +24,23 @@ INSERT INTO {{$table}} (
 		{{ if ne $column.Name "id"}}{{if ne $i 1}},{{end}} ?{{ end }}
 	{{- end }}
 );
+{{ $table := .Rel.Name }}
+-- name: Update{{$table | pascal}} :exec
+UPDATE {{$table}} SET
+	{{ range $i, $column := .Columns -}}
+		{{ if ne $column.Name "id" }}{{if ne $i 1}},{{end}} {{$column.Name}} = ?{{ end }}
+	{{- end }}
+WHERE id = ?;
+
 -- name: Get{{$table | pascal}} :one
 SELECT * FROM {{$table}} WHERE id = ?;
-
-{{ range $i, $column := .Columns -}}
+{{- range $i, $column := .Columns -}}
 {{- if eq $column.Name "guid" }}
+
 -- name: Get{{$table | pascal}}ByGUID :one
 SELECT * FROM {{$table}} WHERE guid = ?;
 {{ end -}}
 {{- end }}
-
 -- name: Delete{{$table | pascal}} :exec
 DELETE FROM {{$table}} WHERE id = ?;
 `
