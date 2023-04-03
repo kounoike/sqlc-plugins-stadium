@@ -1,0 +1,359 @@
+{
+    "settings": {
+        "version": "2",
+        "engine": "mysql",
+        "schema": [
+            "./database/schema"
+        ],
+        "queries": [
+            "./database/queries/"
+        ],
+        "codegen": {
+            "out": "./database/schema_fix/",
+            "plugin": "fix"
+        },
+        "go": {},
+        "json": {}
+    },
+    "catalog": {
+        "default_schema": "public",
+        "schemas": [
+            {
+                "name": "public",
+                "tables": [
+                    {
+                        "rel": {
+                            "name": "blog"
+                        },
+                        "columns": [
+                            {
+                                "name": "id",
+                                "not_null": true,
+                                "length": -1,
+                                "table": {
+                                    "name": "blog"
+                                },
+                                "type": {
+                                    "name": "int"
+                                }
+                            },
+                            {
+                                "name": "url",
+                                "not_null": true,
+                                "length": -1,
+                                "table": {
+                                    "name": "blog"
+                                },
+                                "type": {
+                                    "name": "text"
+                                }
+                            },
+                            {
+                                "name": "contents",
+                                "not_null": true,
+                                "length": -1,
+                                "table": {
+                                    "name": "blog"
+                                },
+                                "type": {
+                                    "name": "text"
+                                }
+                            },
+                            {
+                                "name": "created_at",
+                                "not_null": true,
+                                "length": 19,
+                                "table": {
+                                    "name": "blog"
+                                },
+                                "type": {
+                                    "name": "datetime"
+                                }
+                            },
+                            {
+                                "name": "updated_at",
+                                "not_null": true,
+                                "length": 19,
+                                "table": {
+                                    "name": "blog"
+                                },
+                                "type": {
+                                    "name": "datetime"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "rel": {
+                            "name": "blog_comment"
+                        },
+                        "columns": [
+                            {
+                                "name": "id",
+                                "not_null": true,
+                                "length": -1,
+                                "table": {
+                                    "name": "blog_comment"
+                                },
+                                "type": {
+                                    "name": "int"
+                                }
+                            },
+                            {
+                                "name": "guid",
+                                "not_null": true,
+                                "length": -1,
+                                "table": {
+                                    "name": "blog_comment"
+                                },
+                                "type": {
+                                    "name": "text"
+                                }
+                            },
+                            {
+                                "name": "url",
+                                "not_null": true,
+                                "length": -1,
+                                "table": {
+                                    "name": "blog_comment"
+                                },
+                                "type": {
+                                    "name": "text"
+                                }
+                            },
+                            {
+                                "name": "contents",
+                                "not_null": true,
+                                "length": -1,
+                                "table": {
+                                    "name": "blog_comment"
+                                },
+                                "type": {
+                                    "name": "text"
+                                }
+                            },
+                            {
+                                "name": "created_at",
+                                "not_null": true,
+                                "length": 19,
+                                "table": {
+                                    "name": "blog_comment"
+                                },
+                                "type": {
+                                    "name": "datetime"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "rel": {
+                            "name": "user"
+                        },
+                        "columns": [
+                            {
+                                "name": "id",
+                                "not_null": true,
+                                "length": -1,
+                                "table": {
+                                    "name": "user"
+                                },
+                                "type": {
+                                    "name": "int"
+                                }
+                            },
+                            {
+                                "name": "guid",
+                                "not_null": true,
+                                "length": -1,
+                                "table": {
+                                    "name": "user"
+                                },
+                                "type": {
+                                    "name": "text"
+                                }
+                            },
+                            {
+                                "name": "name",
+                                "not_null": true,
+                                "length": -1,
+                                "table": {
+                                    "name": "user"
+                                },
+                                "type": {
+                                    "name": "text"
+                                }
+                            },
+                            {
+                                "name": "created_at",
+                                "not_null": true,
+                                "length": 19,
+                                "table": {
+                                    "name": "user"
+                                },
+                                "type": {
+                                    "name": "datetime"
+                                }
+                            },
+                            {
+                                "name": "updated_at",
+                                "not_null": true,
+                                "length": 19,
+                                "table": {
+                                    "name": "user"
+                                },
+                                "type": {
+                                    "name": "datetime"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "queries": [
+        {
+            "text": "select id, guid, name, created_at, updated_at from user",
+            "name": "ListUser",
+            "cmd": ":many",
+            "columns": [
+                {
+                    "name": "id",
+                    "not_null": true,
+                    "length": -1,
+                    "table": {
+                        "name": "user"
+                    },
+                    "type": {
+                        "name": "int"
+                    }
+                },
+                {
+                    "name": "guid",
+                    "not_null": true,
+                    "length": -1,
+                    "table": {
+                        "name": "user"
+                    },
+                    "type": {
+                        "name": "text"
+                    }
+                },
+                {
+                    "name": "name",
+                    "not_null": true,
+                    "length": -1,
+                    "table": {
+                        "name": "user"
+                    },
+                    "type": {
+                        "name": "text"
+                    }
+                },
+                {
+                    "name": "created_at",
+                    "not_null": true,
+                    "length": 19,
+                    "table": {
+                        "name": "user"
+                    },
+                    "type": {
+                        "name": "datetime"
+                    }
+                },
+                {
+                    "name": "updated_at",
+                    "not_null": true,
+                    "length": 19,
+                    "table": {
+                        "name": "user"
+                    },
+                    "type": {
+                        "name": "datetime"
+                    }
+                }
+            ],
+            "filename": "user.sql"
+        },
+        {
+            "text": "select id, guid, name, created_at, updated_at from user where name = ?",
+            "name": "GetUserByName",
+            "cmd": ":one",
+            "columns": [
+                {
+                    "name": "id",
+                    "not_null": true,
+                    "length": -1,
+                    "table": {
+                        "name": "user"
+                    },
+                    "type": {
+                        "name": "int"
+                    }
+                },
+                {
+                    "name": "guid",
+                    "not_null": true,
+                    "length": -1,
+                    "table": {
+                        "name": "user"
+                    },
+                    "type": {
+                        "name": "text"
+                    }
+                },
+                {
+                    "name": "name",
+                    "not_null": true,
+                    "length": -1,
+                    "table": {
+                        "name": "user"
+                    },
+                    "type": {
+                        "name": "text"
+                    }
+                },
+                {
+                    "name": "created_at",
+                    "not_null": true,
+                    "length": 19,
+                    "table": {
+                        "name": "user"
+                    },
+                    "type": {
+                        "name": "datetime"
+                    }
+                },
+                {
+                    "name": "updated_at",
+                    "not_null": true,
+                    "length": 19,
+                    "table": {
+                        "name": "user"
+                    },
+                    "type": {
+                        "name": "datetime"
+                    }
+                }
+            ],
+            "params": [
+                {
+                    "number": 1,
+                    "column": {
+                        "name": "name",
+                        "not_null": true,
+                        "length": -1,
+                        "table": {
+                            "name": "user"
+                        },
+                        "type": {
+                            "name": "text"
+                        }
+                    }
+                }
+            ],
+            "filename": "user.sql"
+        }
+    ],
+    "sqlc_version": "v1.17.2"
+}
