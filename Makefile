@@ -1,4 +1,4 @@
-all: sqlc-crud sqlc-fix-schema
+all: sqlc-crud sqlc-fix-schema sqlc-name
 
 sqlc-crud:
 	cd plugin/sqlc-crud && go build .
@@ -10,8 +10,11 @@ sqlc-crud:
 sqlc-fix-schema:
 	cd plugin/sqlc-fix-schema && go build .
 
+sqlc-name:
+	cd plugin/sqlc-name && go build .
+
 install:
-	cp plugin/sqlc-crud/sqlc-crud plugin/sqlc-fix-schema/sqlc-fix-schema $(GOPATH)/bin/
+	cp plugin/sqlc-crud/sqlc-crud plugin/sqlc-fix-schema/sqlc-fix-schema plugin/sqlc-name/sqlc-name $(GOPATH)/bin/
 
 run:
 	rm -r sample/database/schema_fix && mkdir sample/database/schema_fix

@@ -1,4 +1,8 @@
 version: "2"
+plugins:
+  - name: name
+    process:
+      cmd: sqlc-name
 sql:
   - schema:
       - "./database/schema"
@@ -12,3 +16,6 @@ sql:
         package: "table"
         out: "./database/table/"
         emit_db_tags: true
+    codegen:
+      - plugin: name
+        out: "./database/table/"
