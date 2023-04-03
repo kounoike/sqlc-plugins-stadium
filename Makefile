@@ -14,5 +14,6 @@ install:
 	cp plugin/sqlc-crud/sqlc-crud plugin/sqlc-fix-schema/sqlc-fix-schema $(GOPATH)/bin/
 
 run:
-	rm sample/database/schema_fix/* sample/database/queries_crud/*
+	rm -r sample/database/schema_fix && mkdir sample/database/schema_fix
+	rm -r sample/database/queries_crud && mkdir sample/database/queries_crud
 	cd sample && sqlc generate -f sqlc-fix.yaml && sqlc generate -f sqlc-crud.yaml && sqlc generate
